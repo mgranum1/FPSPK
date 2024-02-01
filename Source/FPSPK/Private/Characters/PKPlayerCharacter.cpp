@@ -12,6 +12,7 @@ APKPlayerCharacter::APKPlayerCharacter()
 	/*Camera Component*/
 	FPCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
 	FPCameraComponent->SetupAttachment(GetCapsuleComponent());
+	FPCameraComponent->bUsePawnControlRotation = true;
 
 	/*Skeletal Mesh Component*/
 	FPVMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharMesh"));
@@ -19,13 +20,28 @@ APKPlayerCharacter::APKPlayerCharacter()
 
 }
 
-void APKPlayerCharacter::Move(FInputActionValue& Value)
+void APKPlayerCharacter::Move(const FInputActionValue& Value)
 {
+	GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Emerald, TEXT("Triggering the move function"));
+
+	FVector2D MovementVector = Value.Get<FVector2D>();
+
+	if (Controller != nullptr)
+	{
+		AddMovementInput(GetActorForwardVector(), MovementVector.Y);
+		AddMovementInput(GetActorRightVector(), MovementVector.X);
+	}
 }
 
-void APKPlayerCharacter::LookAround(FInputActionValue& Value)
+void APKPlayerCharacter::LookAround(const FInputActionValue& Value)
 {
+	FVector2D LookAroundVector = Value.Get<FVector2D>();
 
+	if (Controller != nullptr)
+	{
+		AddControllerYawInput(LookAroundVector.X);
+		AddControllerPitchInput(LookAroundVector.Y);
+	}
 }
 
 void APKPlayerCharacter::BeginPlay()
@@ -54,6 +70,12 @@ void APKPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 	if (EnhancedInputComponent)
 	{
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &APKPlayerCharacter::Move);
+		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &APKPlayerCharacter::LookAround);
+
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+
 
 	}
 

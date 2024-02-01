@@ -46,9 +46,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	UInputAction* LookAction;
 
-	void Move(FInputActionValue& Value);
+	void Move(const FInputActionValue& Value);
 
-	void LookAround(FInputActionValue& Value);
+	void LookAround(const FInputActionValue& Value);
 
 protected:
 	virtual void BeginPlay() override;
