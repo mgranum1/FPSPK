@@ -4,6 +4,8 @@
 #include "GameFramework/Character.h"
 #include "PKPlayerCharacter.generated.h"
 
+class UInputMappingContext;
+class UCameraComponent;
 struct FInputActionValue;
 class UInputComponent;
 class UInputAction;
@@ -20,14 +22,33 @@ public:
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	/*
+	 * Components
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UCameraComponent* FPCameraComponent;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USkeletalMeshComponent* FPVMesh;
 
-	// Input Actions
+	/*
+	 * Input Mapping Context and Actions
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	UInputMappingContext* IMC;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	UInputAction* MoveAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	UInputAction* JumpAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	UInputAction* LookAction;
+
 	void Move(FInputActionValue& Value);
+
+	void LookAround(FInputActionValue& Value);
 
 protected:
 	virtual void BeginPlay() override;
