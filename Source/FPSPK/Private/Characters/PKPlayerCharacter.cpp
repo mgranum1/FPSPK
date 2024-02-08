@@ -10,13 +10,13 @@ APKPlayerCharacter::APKPlayerCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	/*Camera Component*/
-	FPCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
-	FPCameraComponent->SetupAttachment(GetCapsuleComponent());
-	FPCameraComponent->bUsePawnControlRotation = true;
+	FPVCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
+	FPVCameraComponent->SetupAttachment(GetCapsuleComponent());
+	FPVCameraComponent->bUsePawnControlRotation = true;
 
 	/*Skeletal Mesh Component*/
 	FPVMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharMesh"));
-	FPVMesh->SetupAttachment(FPCameraComponent);
+	FPVMesh->SetupAttachment(FPVCameraComponent);
 
 }
 
@@ -42,6 +42,26 @@ void APKPlayerCharacter::LookAround(const FInputActionValue& Value)
 		AddControllerYawInput(LookAroundVector.X);
 		AddControllerPitchInput(LookAroundVector.Y);
 	}
+}
+
+void APKPlayerCharacter::SetHasWeapon(bool bHasNewWeapon)
+{
+	bHasWeapon = bHasNewWeapon;
+}
+
+bool APKPlayerCharacter::GetHasWeapon()
+{
+	return bHasWeapon;
+}
+
+USkeletalMeshComponent* APKPlayerCharacter::GetMeshFPV() const
+{
+	return FPVMesh;
+}
+
+UCameraComponent* APKPlayerCharacter::GetFPVCameraComponent() const
+{
+	return FPVCameraComponent;
 }
 
 void APKPlayerCharacter::BeginPlay()
