@@ -17,6 +17,7 @@ class FPSPK_API UFPSPKSphereComponent : public USphereComponent
 {
 	GENERATED_BODY()
 
+public:
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnPickUp OnPickUp;
 

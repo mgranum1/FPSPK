@@ -14,11 +14,14 @@ UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
 class FPSPK_API UFPSPKSkeletalMeshComponent : public USkeletalMeshComponent
 {
 	GENERATED_BODY()
+public:
+	UFPSPKSkeletalMeshComponent() = default;
 
 	APKPlayerCharacter* Character;
 
-	UFUNCTION(Blueprintable, Category = "Object")
+	UFUNCTION(Blueprintable, BlueprintCallable, Category = "Object")
 	void AttachComponentToPlayer(APKPlayerCharacter* TargetCharacter);
 
+	UFUNCTION()
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 };
