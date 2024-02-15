@@ -6,9 +6,10 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 
+
 UFPSPKSkeletalMeshComponent::UFPSPKSkeletalMeshComponent()
 {
-	GuntipOffset = FVector(100.f, 0.0f, 10.f);
+	GuntipOffset = FVector(100.0f, 0.0f, 10.0f);
 }
 
 void UFPSPKSkeletalMeshComponent::AttachComponentToPlayer(APKPlayerCharacter* TargetCharacter)
@@ -66,7 +67,7 @@ void UFPSPKSkeletalMeshComponent::Fire()
 			FActorSpawnParameters ActorSpawnParams;
 			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 
-			World->SpawnActor<AActor>(ProjectileToSpawn, SpawnLocation, SpawnRotation, ActorSpawnParams)
+			World->SpawnActor<AActor>(ProjectileToSpawn, SpawnLocation, SpawnRotation, ActorSpawnParams);
 		}
 	}
 }

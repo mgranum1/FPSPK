@@ -14,8 +14,13 @@ UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
 class FPSPK_API UFPSPKSkeletalMeshComponent : public USkeletalMeshComponent
 {
 	GENERATED_BODY()
+
+
+
 public:
-	UFPSPKSkeletalMeshComponent() = default;
+
+	UFPSPKSkeletalMeshComponent();
+
 
 	APKPlayerCharacter* Character;
 
