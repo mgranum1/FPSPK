@@ -24,4 +24,28 @@ public:
 
 	UFUNCTION()
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WeaponSettings")
+	FVector GuntipOffset;
+
+	/*
+	 * IMC and Actions
+	 */
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+	class UInputMappingContext* FireIMC;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+	class UInputAction* FireAction;
+
+	UFUNCTION(BlueprintCallable, Category = "Input")
+	void Fire();
+
+	/*
+	 * Projectile
+	 */
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile")
+	TSubclassOf<AActor> ProjectileToSpawn;
+
 };
