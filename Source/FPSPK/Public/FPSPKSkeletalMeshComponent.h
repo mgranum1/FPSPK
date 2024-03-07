@@ -46,6 +46,26 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Input")
 	void Fire();
 
+	//-----------------------------------------
+	//-----------------------------------------
+	//-----------------------------------------
+
+	/*
+	 * Animation and Sound
+	 */
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation And Sound")
+	USoundBase* FireSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation And Sound")
+	UAnimMontage* FireAnimation;
+
+	
+
+	//-----------------------------------------
+	//-----------------------------------------
+	//-----------------------------------------
+	
 	/*
 	 * Projectile
 	 */
