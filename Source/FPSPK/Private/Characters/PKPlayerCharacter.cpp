@@ -2,12 +2,17 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputAction.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 
 APKPlayerCharacter::APKPlayerCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
+
+	///*SpringArm Component*/
+	//SpingArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
+	//SpingArm->SetupAttachment(GetRootComponent());
 
 	/*Camera Component*/
 	FPVCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
@@ -17,7 +22,6 @@ APKPlayerCharacter::APKPlayerCharacter()
 	/*Skeletal Mesh Component*/
 	FPVMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharMesh"));
 	FPVMesh->SetupAttachment(FPVCameraComponent);
-
 }
 
 void APKPlayerCharacter::Move(const FInputActionValue& Value)
@@ -81,7 +85,6 @@ void APKPlayerCharacter::BeginPlay()
 void APKPlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 void APKPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -95,9 +98,5 @@ void APKPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
-
-
 	}
-
 }
-

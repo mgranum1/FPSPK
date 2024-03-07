@@ -9,6 +9,7 @@ class UCameraComponent;
 struct FInputActionValue;
 class UInputComponent;
 class UInputAction;
+class USpringArmComponent;
 
 UCLASS()
 class FPSPK_API APKPlayerCharacter : public ACharacter
@@ -27,6 +28,9 @@ public:
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UCameraComponent* FPVCameraComponent;
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//USpringArmComponent* SpingArm;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USkeletalMeshComponent* FPVMesh;
