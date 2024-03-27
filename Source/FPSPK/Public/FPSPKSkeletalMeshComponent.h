@@ -8,19 +8,16 @@
 #include "FPSPKSkeletalMeshComponent.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
 class FPSPK_API UFPSPKSkeletalMeshComponent : public USkeletalMeshComponent
 {
 	GENERATED_BODY()
 
-
-
 public:
 
 	UFPSPKSkeletalMeshComponent();
-
 
 	APKPlayerCharacter* Character;
 
@@ -60,17 +57,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation And Sound")
 	UAnimMontage* FireAnimation;
 
-	
+	//-----------------------------------------
+	//-----------------------------------------
+	//-----------------------------------------
 
-	//-----------------------------------------
-	//-----------------------------------------
-	//-----------------------------------------
-	
 	/*
 	 * Projectile
 	 */
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile")
 	TSubclassOf<AActor> ProjectileToSpawn;
-
 };

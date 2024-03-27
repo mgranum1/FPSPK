@@ -68,6 +68,18 @@ UCameraComponent* APKPlayerCharacter::GetFPVCameraComponent() const
 	return FPVCameraComponent;
 }
 
+float APKPlayerCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator,
+	AActor* DamageCauser)
+{
+	//return Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	Health -= DamageAmount;
+	if (Health <= 0)
+	{
+		Destroy();
+	}
+	return DamageAmount;
+}
+
 void APKPlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();

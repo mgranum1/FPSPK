@@ -10,7 +10,7 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPickUp, APKPlayerCharacter*, PickUpCharacter);
 
 /**
- * 
+ *
  */
 UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
 class FPSPK_API UFPSPKSphereComponent : public USphereComponent
