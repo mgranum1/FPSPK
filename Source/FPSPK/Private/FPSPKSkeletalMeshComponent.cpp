@@ -84,5 +84,7 @@ void UFPSPKSkeletalMeshComponent::Fire()
 		{
 			AnimInstance->Montage_Play(FireAnimation, 1.f);
 		}
+
+		GetAnimInstance()->Montage_Play(FireAnimation, 1.f);
 	}
 }
