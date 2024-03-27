@@ -1,12 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "FPSPKSkeletalMeshComponent.h"
 
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Kismet/GameplayStatics.h"
-
 
 UFPSPKSkeletalMeshComponent::UFPSPKSkeletalMeshComponent()
 {
@@ -37,7 +35,7 @@ void UFPSPKSkeletalMeshComponent::AttachComponentToPlayer(APKPlayerCharacter* Ta
 			Subsystem->AddMappingContext(FireIMC, 1);
 		}
 
-			UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent);
+		UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent);
 
 		if (EnhancedInputComponent)
 		{

@@ -26,7 +26,7 @@ APKPlayerCharacter::APKPlayerCharacter()
 
 void APKPlayerCharacter::Move(const FInputActionValue& Value)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Emerald, TEXT("Triggering the move function"));
+	//GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Emerald, TEXT("Triggering the move function"));
 
 	FVector2D MovementVector = Value.Get<FVector2D>();
 
