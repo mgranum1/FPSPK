@@ -50,9 +50,20 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	UInputAction* LookAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	UInputAction* InteractAction;
+
+
 	void Move(const FInputActionValue& Value);
 
 	void LookAround(const FInputActionValue& Value);
+
+	
+
+
+	UFUNCTION(Category = "Interact")
+	void InteractWithObjects(const FInputActionValue& Value);
+
 
 	/*
 	 * Weapon
@@ -80,6 +91,12 @@ public:
 		class AController* EventInstigator,
 		AActor* DamageCauser
 	)override;
+
+
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Interact")
+	float InteractRange = 500.0f;
+
 
 protected:
 	virtual void BeginPlay() override;
